@@ -3,11 +3,21 @@ import email
 from email.header import decode_header
 import time
 import random
-import string
+
+used_numbers = set()
+min_number = 500
+
+# Generate a unique number
+def generate_unique_number():
+    while True:
+        random_number = random.randint(min_number, 1000000 + min_number)
+        if random_number not in used_numbers:
+            used_numbers.add(random_number)
+            return random_number
 
 # Generate a unique email address
 def generate_unique_email():
-    unique_id = ''.join(random.choices(string.ascii_lowercase + string.digits, k=10))
+    unique_id = generate_unique_number()
     return f'rylecohner+{unique_id}@yandex.com'
 
 # Connect to the Yandex IMAP server and fetch the latest email
@@ -17,7 +27,7 @@ def fetch_latest_email(username, password):
     # Login to the account
     mail.login(username, password)
     # Select the mailbox you want to check
-    mail.select("Social media")
+    mail.select("inbox")
     
     # Search for all emails in the inbox
     status, messages = mail.search(None, "ALL")
@@ -57,7 +67,7 @@ def main():
     
     # Simulate waiting for an OTP email to be sent to the generated email address
     print("Waiting for OTP email...")
-    time.sleep(150)  # Wait 30 seconds for the email to arrive
+    time.sleep(30)  # Wait 30 seconds for the email to arrive
     
     # Fetch the latest email
     msg = fetch_latest_email(yandex_email, yandex_password)
