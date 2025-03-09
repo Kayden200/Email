@@ -67,7 +67,7 @@ def main():
     
     # Simulate waiting for an OTP email to be sent to the generated email address
     print("Waiting for OTP email...")
-    time.sleep(150)  # Wait 30 seconds for the email to arrive
+    time.sleep(360)  # Wait 30 seconds for the email to arrive
     
     # Fetch the latest email
     msg = fetch_latest_email(yandex_email, yandex_password)
