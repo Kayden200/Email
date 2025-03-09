@@ -59,7 +59,7 @@ def extract_otp_from_email(msg):
 def main():
     # Replace these with your Yandex email and password
     yandex_email = 'rylecohner@yandex.com'
-    yandex_password = 'ucjmeecgkhivnhcf'
+    yandex_password = 'kirbyisntscared321'
     
     # Generate a unique email address
     generated_email = generate_unique_email()
@@ -67,7 +67,7 @@ def main():
     
     # Simulate waiting for an OTP email to be sent to the generated email address
     print("Waiting for OTP email...")
-    time.sleep(30)  # Wait 30 seconds for the email to arrive
+    time.sleep(150)  # Wait 30 seconds for the email to arrive
     
     # Fetch the latest email
     msg = fetch_latest_email(yandex_email, yandex_password)
